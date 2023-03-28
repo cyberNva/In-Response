@@ -5,16 +5,17 @@ import mysql.connector
 import streamlit as st
 from mysql.connector import Error
 
-
-def create_db_connection(host_name='localhost', user_name='root', user_password='Noof@123gh', db_name='InResponse'):
+@st.cache_resource 
+def create_db_connection():
     connection = None
     try:
-        connection = mysql.connector.connect(
-            host=host_name,
-            user=user_name,
-            passwd=user_password,
-            database=db_name
-        )
+        # connection = mysql.connector.connect(
+        #     host=host_name,
+        #     user=user_name,
+        #     passwd=user_password,
+        #     database=db_name
+        # )
+        return mysql.connector.connect(**st.secrets["mysql"])
         print("MySQL Database connection successful")
     except Error as err:
         os.system('service mysql start')
