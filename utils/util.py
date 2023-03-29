@@ -48,7 +48,7 @@ def read_query(connection, query):
         st.info("Starting MySQL Server....")
         os.system('service mysql start')
         time.sleep(5)
-        cursor = connection.cursor()
+        # cursor = connection.cursor()
     try:
         cursor.execute(query)
         result = cursor.fetchall()
