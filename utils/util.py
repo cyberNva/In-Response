@@ -5,7 +5,7 @@ import mysql.connector
 import streamlit as st
 from mysql.connector import Error
 
-@st.cache_resource 
+# @st.cache_resource 
 def create_db_connection():
     connection = None
     try:
@@ -15,7 +15,8 @@ def create_db_connection():
         #     passwd=user_password,
         #     database=db_name
         # )
-        return mysql.connector.connect(**st.secrets["mysql"])
+        connection = mysql.connector.connect(**st.secrets["mysql"])
+        return connection
         print("MySQL Database connection successful")
     except Error as err:
         os.system('service mysql start')
