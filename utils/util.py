@@ -5,7 +5,7 @@ import mysql.connector
 import streamlit as st
 from mysql.connector import Error
 
-# @st.cache_resource 
+@st.cache_resource 
 def create_db_connection():
     connection = None
     try:
@@ -71,6 +71,7 @@ def __Create_Tabels(connection):
     execute_query(connection,create_table)
 
 def call_users():
+    c= create_db_connection()
     usernameQ = """ SELECT username FROM users """
     nameQ =  """ SELECT name FROM users """
     passQ = """ SELECT password FROM users """
