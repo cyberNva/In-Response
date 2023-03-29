@@ -40,6 +40,7 @@ def execute_query(connection, query):
         print(f"Error: '{err}'")
 
 def read_query(connection, query):
+    connection = create_db_connection()
     cursor = None
     try:
         cursor = connection.cursor()
@@ -48,7 +49,7 @@ def read_query(connection, query):
         st.info("Starting MySQL Server....")
         os.system('service mysql start')
         time.sleep(5)
-        # cursor = connection.cursor()
+        cursor = connection.cursor()
     try:
         cursor.execute(query)
         result = cursor.fetchall()
