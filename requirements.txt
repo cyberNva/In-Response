@@ -1,6 +1,6 @@
 attr==0.3.2
 attrs==22.2.0
-mysql-connector-python-rf==2.2.2
+mysql-connector-python==8.0.32
 pandas==1.5.3
 streamlit==1.20.0
 streamlit_authenticator==0.2.1
