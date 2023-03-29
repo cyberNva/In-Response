@@ -20,7 +20,7 @@ def create_db_connection():
     except Error as err:
         os.system('service mysql start')
         print(f"Error: '{err}'")
-
+    
     return connection
 
 def execute_query(connection, query):
@@ -40,7 +40,6 @@ def execute_query(connection, query):
         print(f"Error: '{err}'")
 
 def read_query(connection, query):
-    connection = create_db_connection()
     cursor = None
     try:
         cursor = connection.cursor()
