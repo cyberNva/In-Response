@@ -23,7 +23,7 @@ def create_db_connection():
 
     return connection
 
-
+connection = create_db_connection()
 def execute_query(connection, query):
     cursor = None
     try:
@@ -71,14 +71,14 @@ def __Create_Tabels(connection):
     execute_query(connection,create_table)
 
 def call_users():
-    c= create_db_connection()
+    
     usernameQ = """ SELECT username FROM users """
     nameQ =  """ SELECT name FROM users """
     passQ = """ SELECT password FROM users """
 
-    r1 = read_query(c,usernameQ)
-    r2 = read_query(c,nameQ)
-    r3 = read_query(c,passQ)
+    r1 = read_query(connection,usernameQ)
+    r2 = read_query(connection,nameQ)
+    r3 = read_query(connection,passQ)
     usernames = []
     names = []
     passwords = []
@@ -96,8 +96,8 @@ def call_users():
 
     return usernames,names,passwords
 
-c = create_db_connection()
-# __Create_Tabels(c)
+
+# __Create_Tabels(connection)
 q0 = """
 "INSERT INTO users (username, password, name, email)
  VALUES (%s, %s, %s, %s)"
@@ -108,9 +108,9 @@ INSERT INTO users ( username, password, name , email) VALUES ('amal', SHA2('amal
 """
 delQ= """ DELETE FROM users WHERE id=8;"""
 
-# execute_query(c,delQ)
+# execute_query(connection,delQ)
 
-# r = read_query(c,q1)
+# r = read_query(connection,q1)
 
 # for row in r:
 #     print(row)
