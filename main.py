@@ -11,31 +11,10 @@ import pandas as pd
 # c= sqlcon.create_db_connection()
 
 def main(connection):
-
-    usernameQ = """ SELECT username FROM users """
-    nameQ =  """ SELECT name FROM users """
-    passQ = """ SELECT password FROM users """
-
-    r1 = sqlcon.read_query(connection,usernameQ)
-    r2 = sqlcon.read_query(connection,nameQ)
-    r3 = sqlcon.read_query(connection,passQ)
-    usernames = []
-    names = []
-    passwords = []
-
-    for row in r1:
-        row  = ''.join(letter for letter in row if letter.isalnum())
-        usernames.append(row)
-        
-    for row in r2:
-        # row  = ''.join(letter for letter in row if letter.isalnum())
-        names.append(row)
-    for row in r3:
-        row  = ''.join(letter for letter in row if letter.isalnum())
-        passwords.append(row)
+    
     c= connection
 
-    # usernames , names , passwords = sqlcon.call_users()
+    usernames , names , passwords = sqlcon.call_users()
     hashed_passwords = stauth.Hasher(passwords).generate()
 
 
