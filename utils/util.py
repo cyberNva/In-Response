@@ -4,6 +4,7 @@ import time
 import mysql.connector
 import streamlit as st
 from mysql.connector import Error
+from mysql.connector import _version
 
 @st.cache_resource 
 def create_db_connection():
