@@ -23,7 +23,6 @@ def create_db_connection():
 
     return connection
 
-connection = create_db_connection()
 def execute_query(connection, query):
     cursor = None
     try:
@@ -71,7 +70,7 @@ def __Create_Tabels(connection):
     execute_query(connection,create_table)
 
 def call_users():
-    
+    connection = create_db_connection()
     usernameQ = """ SELECT username FROM users """
     nameQ =  """ SELECT name FROM users """
     passQ = """ SELECT password FROM users """
