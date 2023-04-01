@@ -3,6 +3,5 @@ extra_streamlit_components==0.1.56
 pandas==1.5.3
 PyJWT==2.6.0
 python_bcrypt==0.3.2
-pytz==2022.7.1
 streamlit==1.20.0
-xmlrpclib==1.0.1
+
