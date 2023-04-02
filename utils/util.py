@@ -25,13 +25,16 @@ def create_db_connection(host_name='sql12.freemysqlhosting.net', user_name='sql1
 def execute_query(connection, query):
     cursor = None
     try:
+        cursor.reconnect() 
         cursor = connection.cursor()
     except Exception:
         os.system('service mysql start')
         time.sleep(2)
+        cursor.reconnect() 
         cursor = connection.cursor()
 
     try:
+        cursor.reconnect() 
         cursor.execute(query)
         connection.commit()
         st.info("Query successful")
@@ -42,12 +45,15 @@ def execute_query(connection, query):
 def read_query(connection, query):
     cursor = None
     try:
+        cursor.reconnect() 
         cursor = connection.cursor()
         result = None
     except Exception:
         st.info("Starting MySQL Server....")
+        cursor.reconnect() 
         cursor = connection.cursor()
     try:
+        cursor.reconnect() 
         cursor.execute(query)
         result = cursor.fetchall()
         # st.info("Info Pull successful")
