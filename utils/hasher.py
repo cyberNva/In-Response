@@ -1,6 +1,6 @@
 
 # import bcrypt
-import _bcrypt
+import utils._bcrypt as _bcrypt
 
 class Hasher:
     """
