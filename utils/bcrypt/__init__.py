@@ -1,10 +1,3 @@
-import typing
-
-def encode_base64(data: bytes) -> bytes: ...
-def hashpass(password: bytes, salt: bytes) -> bytes: ...
-def pbkdf(
-    password: bytes, salt: bytes, rounds: int, desired_key_bytes: int
-) -> bytes: ...
 # Author:: Donald Stufft (<donald@stufft.io>)
 # Copyright:: Copyright (c) 2013 Donald Stufft
 # License:: Apache License, Version 2.0
@@ -20,23 +13,23 @@ def pbkdf(
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# from __future__ import absolute_import
-# from __future__ import division
+from __future__ import absolute_import
+from __future__ import division
 
 import hmac
 import os
 import warnings
 
-# from .__about__ import (
-#     __author__,
-#     __copyright__,
-#     __email__,
-#     __license__,
-#     __summary__,
-#     __title__,
-#     __uri__,
-#     __version__,
-# )
+from .__about__ import (
+    __author__,
+    __copyright__,
+    __email__,
+    __license__,
+    __summary__,
+    __title__,
+    __uri__,
+    __version__,
+)
 from . import _bcrypt  # noqa: I100
 
 

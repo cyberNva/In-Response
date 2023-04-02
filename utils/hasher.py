@@ -1,6 +1,6 @@
 
-# import bcrypt
-import utils._bcrypt as _bcrypt
+import utils.bcrypt as bcrypt
+# import utils._bcrypt as _bcrypt
 
 class Hasher:
     """
@@ -30,7 +30,7 @@ class Hasher:
         str
             The hashed password.
         """
-        return _bcrypt.hashpw(password.encode(), _bcrypt.gensalt()).decode()
+        return bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
 
 
     def generate(self) -> list:
