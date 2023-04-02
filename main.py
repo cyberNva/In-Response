@@ -46,7 +46,7 @@ def main(connection):
             st.subheader("Profiles:")
 
             query = 'SELECT id, username , name, email FROM users;'
-            cursor.reconnect() 
+            c = c.reconnect() 
             cursor = c.cursor()
             cursor.execute(query)
             results = cursor.fetchall()
@@ -82,7 +82,7 @@ def main(connection):
                 sqlQ = "INSERT INTO `users`(`username`, `password`, `name`, `email`) VALUES (%s,%s,%s,%s)" 
                 values = (new_username, hashed_password, new_name, new_email)
                 cursor = None
-                cursor.reconnect() 
+                c = c.reconnect()
                 cursor = c.cursor()
                 cursor.execute(sqlQ, values)
                 c.commit()
