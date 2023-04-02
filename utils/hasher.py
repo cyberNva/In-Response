@@ -30,7 +30,7 @@ class Hasher:
         str
             The hashed password.
         """
-        return bcrypt.hashpw(password.encode(), _bcrypt.gensalt()).decode()
+        return _bcrypt.hashpw(password.encode(), _bcrypt.gensalt()).decode()
 
 
     def generate(self) -> list:
