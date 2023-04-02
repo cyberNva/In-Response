@@ -13,9 +13,10 @@ def create_db_connection(host_name='sql12.freemysqlhosting.net', user_name='sql1
             user=user_name,
             passwd=user_password,
             database=db_name
+
         )
         # connection = mysql.connector.connect(**st.secrets["mysql"])
-        st.info("Database connection successful")
+        # st.info("Database connection successful")
     except Error as err:
         os.system('service mysql start')
         st.info(f"Error: '{err}'")
