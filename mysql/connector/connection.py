@@ -805,8 +805,8 @@ class MySQLConnection(MySQLConnectionAbstract):
         """
         self.handle_unread_result()
 
-        if not self.is_connected():
-            raise errors.OperationalError("MySQL Connection not available.")
+        # if not self.is_connected():
+        #     raise errors.OperationalError("MySQL Connection not available.")
         if cursor_class is not None:
             if not issubclass(cursor_class, CursorBase):
                 raise errors.ProgrammingError(

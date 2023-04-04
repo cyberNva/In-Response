@@ -1,12 +1,15 @@
 import os
 import time
+import mysql
 import mysql.connector
 from mysql.connector import Error
 import streamlit as st
 
+
+connection = None 
 @st.cache_resource 
 def create_db_connection(host_name='sql12.freemysqlhosting.net', user_name='sql12609927', user_password='mqrzvyCxLW', db_name='sql12609927'):
-    connection = None
+    # connection = None 
     try:
         connection = mysql.connector.connect(
             host=host_name,
@@ -15,11 +18,16 @@ def create_db_connection(host_name='sql12.freemysqlhosting.net', user_name='sql1
             database=db_name
 
         )
+        cursor = connection.cursor()
         # connection = mysql.connector.connect(**st.secrets["mysql"])
         # st.info("Database connection successful")
     except Error as err:
         os.system('service mysql start')
         st.info(f"Error: '{err}'")
+        cursor = connection.cursor()
+
+    else:
+        os.system('somthing else')
     return connection
 
 def execute_query(connection, query):
@@ -108,11 +116,24 @@ INSERT INTO users ( username, password, name , email) VALUES ('noof', SHA2('noof
 """
 delQ= """ DELETE FROM users WHERE id=8;"""
 
-# execute_query(connection,q2)
+# connect_timeout: Number of seconds the mysqld server waits for a connect packet before responding with 'Bad handshake'
+# interactive_timeout Number of seconds the server waits for activity on an interactive connection before closing it
+# wait_timeout Number of seconds the server waits for activity on a connection before closing it
+
+globalQ1= """ SET GLOBAL connect_timeout=28800 """
+globalQ2= """ SET GLOBAL interactive_timeout=28800 """
+globalQ3= """ SET GLOBAL wait_timeout=28800 """
+
+# execute_query(connection,globalQ1)
+
 
 # r = read_query(connection,q1)
 
 # for row in r:
 #     print(row)
+
+# connection.query('SET GLOBAL connect_timeout=28800')
+# connection.query('SET GLOBAL interactive_timeout=28800')
+# connection.query('SET GLOBAL wait_timeout=28800')
 
 

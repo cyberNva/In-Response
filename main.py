@@ -34,7 +34,6 @@ def main(connection):
     
         st.title('Admin Page')
         st.write('Welcome *%s*' % (name))
-        st.write('Welcome ')
         adminMenu = st.selectbox("Admin Menu", ["Home", "Opened Tickets", "Closed Tickets","Users Profiles","Add User"])
         if adminMenu == "Home":
             st.subheader("Dashboard")
