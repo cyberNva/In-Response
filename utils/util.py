@@ -8,8 +8,7 @@ import streamlit as st
 
 connection = None 
 @st.cache_resource 
-def create_db_connection(host_name='sql12.freemysqlhosting.net', user_name='sql12609927', user_password='mqrzvyCxLW', db_name='sql12609927'):
-    # connection = None 
+def create_db_connection(host_name='sql12.freemysqlhosting.net', user_name='sql12611655', user_password='ItD8sPSJru', db_name='sql12611655', conn_time=30):    # connection = None 
     try:
         connection = mysql.connector.connect(
             host=host_name,
@@ -114,6 +113,9 @@ q1 = """ SELECT * FROM users """
 q2 = """ 
 INSERT INTO users ( username, password, name , email) VALUES ('noof', SHA2('noof', 256),'Noof', 'noof@gmail.com');
 """
+q3 = """ 
+INSERT INTO users ( username, password, name , email) VALUES ('admin', SHA2('admin', 256),'Noof', 'noof@gmail.com');
+"""
 delQ= """ DELETE FROM users WHERE id=8;"""
 
 # connect_timeout: Number of seconds the mysqld server waits for a connect packet before responding with 'Bad handshake'
@@ -124,7 +126,9 @@ globalQ1= """ SET GLOBAL connect_timeout=28800 """
 globalQ2= """ SET GLOBAL interactive_timeout=28800 """
 globalQ3= """ SET GLOBAL wait_timeout=28800 """
 
-# execute_query(connection,globalQ1)
+Qq= """ SHOW GRANTS FOR 'sql12609927'@'ec2-52-8-112-233.us-west-1.compute.amazonaws.com';"""
+
+# execute_query(connection,q3)
 
 
 # r = read_query(connection,q1)
