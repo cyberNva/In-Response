@@ -8,7 +8,7 @@ import pandas as pd
 import hashlib  
 
 global c
-c = sqlcon.create_conn()
+# c = sqlcon.create_conn()
 def main():
     
     
