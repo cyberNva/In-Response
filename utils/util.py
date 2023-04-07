@@ -3,12 +3,15 @@ import time
 import mysql
 import mysql.connector
 from mysql.connector import Error
+import mysql.connector.pooling
 import streamlit as st
 
 
 connection = None 
 @st.cache_resource 
-def create_db_connection(host_name='sql12.freemysqlhosting.net', user_name='sql12611655', user_password='ItD8sPSJru', db_name='sql12611655', conn_time=30):    # connection = None 
+def create_db_connection(host_name='sql12.freemysqlhosting.net', user_name='sql12611655',
+                          user_password='ItD8sPSJru', db_name='sql12611655'
+                          ):    # connection = None 
     try:
         connection = mysql.connector.connect(
             host=host_name,
